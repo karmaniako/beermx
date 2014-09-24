@@ -1,28 +1,41 @@
-var ntable = 2;
+var ntable = 0;
 
 //Socket.io
     var socket = io('http://localhost:3000');
-
+/*
     socket.on('ROOM_CNN',function(data){
         data = {table: ntable}
     	socket.emit('ROOM_CNN', data);
     });
+*/
 
     socket.on('MSG',function(data){
     	console.log(data);
     })
 
 //JQuery
-    $(document).ready(function(){
-    	$("#beerbutton" ).click(function(e) {
-console.log('BUTTON PRESS')
-        	var data = {
-        		table: 	"1",
-        		name: 	"table 1"
-        	};
 
-        	if (socket.emit('BEERPLX',data)) alert("Se ha enviado la petición...");
-        });
+    $(document).on("click", "#beerbutton", function() {
+        console.log("BeerButton click!");
+
+        var data = {
+            table:  ntable,
+            name:   "table ntable"
+        };
+
+        if (socket.emit('BEERPLX',data)) alert("Se ha enviado la petición...");
+    });
+   
+   // $( document, "input tablebtn" ).on( "click", function() {
+    //$('input:radio[name="tables"]').change(function(){
+    
+    $(document).on("click", "label", function() {
+
+        var valueRadio = this.children.tables.value
+        ntable = valueRadio;
+        var data = {table: valueRadio};
+
+        socket.emit('ROOM_CNN',data);
     });
 
 
@@ -45,13 +58,13 @@ console.log('BUTTON PRESS')
             // route for the beer button page
             .when('/beerbutton', {
                 templateUrl : 'pages_beer/beerbutton.html',
-                controller  : 'aboutController'
+                controller  : 'berrbuttonController'
             })
 
             // route for the info page
             .when('/info', {
                 templateUrl : 'pages_beer/info.html',
-                controller  : 'contactController'
+                controller  : 'infoController'
             });
     });
 
@@ -60,6 +73,7 @@ console.log('BUTTON PRESS')
         
         $scope.ntables=20;
 
+        //Create and fill array of tables
         $scope.tables = function(num) {
             var arr = new Array(num); 
             for( i=0; i < arr.length; i++){
@@ -67,7 +81,9 @@ console.log('BUTTON PRESS')
             }
 
             return arr;
-        }   
+        }  
+
+        $scope.tableSelected = 2;
 
         // create a message to display in our view
         $scope.message = 'Everyone come and see how good I look!';
@@ -75,10 +91,10 @@ console.log('BUTTON PRESS')
 
     });
 
-    beerApp.controller('aboutController', function($scope) {
+    beerApp.controller('berrbuttonController', function($scope) {
         $scope.message = 'Look! I am an about page.';
     });
 
-    beerApp.controller('contactController', function($scope) {
+    beerApp.controller('infoController', function($scope) {
         $scope.message = 'Contact us! JK. This is just a demo.';
     });
