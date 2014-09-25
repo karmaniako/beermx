@@ -1,0 +1,68 @@
+</style> <!-- Ugly Hack due to jsFiddle issue: http://goo.gl/BUfGZ --> 
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.min.js"></script>
+<style>
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.center{
+    margin: auto;
+    width: 325px;
+    background-position: center;
+
+}
+
+#beerplx{
+  background-color: #FAF8C0;
+  border: 1px;
+  height:100vh;
+  width: 100%;
+}
+
+#bann{
+  background-image: url("../images/chelamx.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 10%;
+  margin-bottom: .5%
+}
+
+#main{
+  height: 85%;
+}
+
+#beerbutton{
+  background-image: url("../images/beernow.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 75%;
+  padding: 10%;
+}
+
+footer{
+  position : fixed;
+  bottom : 0;
+  width: inherit;
+}
+
+
+.alert-success-order {
+  color: #3c763d;
+  background-color: #DEDEA0;
+}
+
+.alert-info-order {
+  color: #31708f;
+  background-color: #d9edf7;
+}
+
+.btn{
+  margin: 5px;
+  width: 3em;
+}

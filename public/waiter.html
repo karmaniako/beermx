@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html ng-app="todoApp">
+<head>
+    <title>Beer now</title>
+    
+    <script src="javascripts/angular.min.js"></script>
+    <script src="javascripts/jquery-2.1.1.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="javascripts/waiter.js"></script>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+</head>
+
+<body>   
+    
+    <h2>BEER NOW!</h2>
+    <div id="waiter" ng-controller="TodoController">       
+            
+            <h3>Mesero</h3>
+            
+            <br/>
+            <span class="label label-danger">{{remaining()}}</span>
+            pendiente de
+            <span class="label label-success">{{todos.length}}</span>pedidos</span>
+            <a href=""
+                class="btn btn-warning" role="button"
+                ng-click="archive()">Limpiar atendidos      
+            </a>
+            
+            <div class="list-group">
+                <a href="#" class="list-group-item active">
+                  PEDIDOS:
+                </a>
+                
+                
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="todo in todos">
+                        <input type="checkbox" ng-model="todo.done">
+                            Mesa:
+                        <span class="label label-info"> {{todo.table}}</span>  
+                        <span class="done-{{todo.done}}">{{todo.date}}</span>
+                        <span class="badge">{{todo.repeat}}</span>
+                    </li>
+                </ul>   
+            </div> 
+    </div>
+</body>
+</html>

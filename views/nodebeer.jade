@@ -1,0 +1,13 @@
+extends layout
+
+block append head
+	script(src="/socket.io/socket.io.js")
+	script(src="/javascripts/jquery-2.1.1.js")
+	script(src="/javascripts/nodebeer.js")
+
+block content
+	h1= title
+	p holo
+
+	#beerplx
+		p BEER PLX!
